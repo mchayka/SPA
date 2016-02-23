@@ -1,0 +1,33 @@
+{
+  "name": "skiooApp",
+  "version": "0.0.1",
+  "description": "Application for skioo website",
+  "main": "",
+  "dependencies": {
+    "gulp": "",
+    "bower": "",
+    "del": "",
+    "event-stream": "",
+    "gulp-file": "",
+    "gulp-angular-filesort": "",
+    "gulp-concat": "",
+    "gulp-inject": "",
+    "gulp-filter": "",
+    "gulp-load-plugins": "",
+    "gulp-ng-html2js": "",
+    "gulp-order": "",
+    "gulp-sass": "",
+    "gulp-minify-css": "",
+    "gulp-uglify": "",
+    "gulp-rename": "",
+    "gulp-replace": "",
+    "gulp-sourcemaps": "",
+    "gulp-ng-annotate":"",
+    "gulp-shell": "~0.5.1",
+    "main-bower-files": "",
+    "gulp-preprocess": ""
+  },
+  "devDependencies": {},
+  "author": "Viktor Ugrin",
+  "license": "ISC"
+}

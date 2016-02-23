@@ -1,0 +1,50 @@
+{
+  "name": "skioo-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "",
+    "angular": "1.4.9",
+    "angular-cookies": "1.4.8",
+    "angular-material": "1.0.2",
+    "angular-translate": "2.8.1",
+    "angular-ui-router": "0.2.15",
+    "angular-messages": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-aria": "1.4.8"
+  },
+  "resolutions":{
+    "angular": "1.4.9"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "dist/jquery.min.js"
+    },
+    "angular": {
+      "main": "angular.min.js"
+    },
+    "angular-animate": {
+      "main": "angular-animate.min.js"
+    },
+    "angular-cookies": {
+      "main": "angular-cookies.min.js"
+    },
+    "angular-material": {
+      "main": ["angular-material.min.js", "angular-material.min.css"]
+    },
+    "angular-translate": {
+      "main": "angular-translate.min.js"
+    },
+    "angular-ui-router": {
+      "main": "release/angular-ui-router.min.js"
+    },
+    "angular-messages": {
+      "main": "angular-messages.min.js"
+    },
+    "angular-sanitize": {
+      "main": "angular-sanitize.min.js"
+    },
+    "angular-aria": {
+      "main": "angular-aria.min.js"
+    }
+  }
+}
