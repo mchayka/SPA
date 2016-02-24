@@ -2,6 +2,8 @@ angular
     .module('app', [
         'ui.router',
 
+        'shared',
+
         'templates',
 
         'auth',
