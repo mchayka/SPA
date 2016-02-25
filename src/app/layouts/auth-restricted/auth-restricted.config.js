@@ -8,7 +8,7 @@
         $stateProvider.state('auth-restricted', {
             abstract: true,
             resolve: {
-                userInfo: userInfo
+                userInfo: userInfoResolver
             },
             views: {
                 content: {
@@ -19,13 +19,19 @@
     }
 
     /*ngInject*/
-    function userInfo($firebaseAuth, $q, $state, firebaseReference) {
-        var userInfo = $firebaseAuth(firebaseReference).$getAuth();
-        if (userInfo == null) {
-            $state.go('game');
-            return $q.reject();
-        } else {
-            return $q.resolve(userInfo);
-        }
+    function userInfoResolver($firebaseAuth, $q, $state, $timeout, firebaseReference) {
+        var deferred = $q.defer();
+
+        $timeout(function() {
+            var userInfo = $firebaseAuth(firebaseReference).$getAuth();
+            if (userInfo == null) {
+                $state.go('login');
+                deferred.reject();
+            } else {
+                deferred.resolve(userInfo);
+            }
+        });
+
+        return deferred.promise;
     }
 })();

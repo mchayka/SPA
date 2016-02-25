@@ -4,7 +4,7 @@
         .controller('AppController', AppController);
 
     /*ngInject*/
-    function AppController($rootScope, authService, appService) {
+    function AppController($rootScope, appService) {
 
         $rootScope.users = appService.getUsers();
         $rootScope.chats = appService.getChats();
