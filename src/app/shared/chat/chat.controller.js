@@ -6,14 +6,17 @@
     /*ngInject*/
     function ChatController($scope, chatService) {
 
-        $scope.messages = chatService.getMessages($scope.chat.id);
+        $scope.messages = chatService.getMessages($scope.chatId);
         $scope.keyPress = keyPress;
 
         function keyPress(event) {
+            var message;
             if (event.originalEvent.keyCode == 13) {
                 if ($scope.messageField) {
+                    message = $scope.messageField;
+                    $scope.messageField = '';
                     chatService
-                        .sendMessage($scope.messageField);
+                        .sendMessage($scope.chatId, $scope.accountInfo.uid, message);
                 }
             }
         }

@@ -13,11 +13,10 @@
 
             loginService
                 .login($scope.formData)
-                .then(function(response) {
-                    console.log(response);
+                .then(function() {
                     $state.go('dashboard');
                 }, function(response) {
-                    console.log(response);
+                    //TODO: Show some error message for login page
                 });
         }
     }

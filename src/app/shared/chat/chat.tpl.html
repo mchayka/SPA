@@ -1,7 +1,10 @@
 <div>
-    <h3>{{chat.id}}</h3>
-    <div class="mesages">
-        <div class="message" ng-repeat="message in messages">{{message.content}}</div>
+    <h3>{{chatId}}</h3>
+    <div class="messages">
+        <div class="message" ng-repeat="message in messages">
+            <div>From: {{message.sender}}</div>
+            <div>From: {{message.message}}</div>
+        </div>
     </div>
     <input ng-model="messageField" ng-keypress="keyPress($event)"/>
 </div>

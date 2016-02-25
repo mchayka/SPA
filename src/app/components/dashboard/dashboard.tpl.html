@@ -1,2 +1,9 @@
-<div>This is Dashboard view</div>
+<div>This is Dashboard view and My name is {{userInfo.name}}</div>
+<div class="users-list">
+    <div class="user" ng-repeat="(uid, user) in users">
+        <span>{{user.name}}</span>
+        <a href="#" ng-click="talkTo($event, uid)">chat</a>
+    </div>
+</div>
+<chat ng-repeat="(chatId, value) in chats"></chat>
 <a href="#" ng-click="signOut()">Sign-out</a>

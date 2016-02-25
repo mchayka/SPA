@@ -8,7 +8,7 @@
         $stateProvider.state('auth-restricted', {
             abstract: true,
             resolve: {
-                userInfo: userInfoResolver
+                AccountInfo: accountInfoResolver
             },
             views: {
                 content: {
@@ -19,7 +19,7 @@
     }
 
     /*ngInject*/
-    function userInfoResolver($firebaseAuth, $q, $state, $timeout, firebaseReference) {
+    function accountInfoResolver($firebaseAuth, $q, $state, $timeout, firebaseReference) {
         var deferred = $q.defer();
 
         $timeout(function() {

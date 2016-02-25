@@ -17,11 +17,11 @@
                     firebaseReference
                         .child('dots/users/' + response.uid)
                         .set({
-                            name: $scope.name
+                            name: $scope.name,
+                            chats: []
                         });
-                    console.log(response);
                 }, function(response) {
-                    console.log(response);
+                    //TODO: Show some error message for Register page
                 });
         }
     }
