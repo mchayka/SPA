@@ -10,7 +10,9 @@
     "angular-ui-router": "0.2.15",
     "angular-messages": "1.4.8",
     "angular-sanitize": "1.4.8",
-    "angular-aria": "1.4.8"
+    "angular-aria": "1.4.8",
+    "firebase": "",
+    "angularfire": ""
   },
   "resolutions":{
     "angular": "1.4.9"
@@ -45,6 +47,12 @@
     },
     "angular-aria": {
       "main": "angular-aria.min.js"
+    },
+    "firebase": {
+      "main": "firebase.js"
+    },
+    "angularfire": {
+      "main": "dist/angularfire.min.js"
     }
   }
 }

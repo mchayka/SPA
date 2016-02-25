@@ -8,10 +8,6 @@
 
         $rootScope.users = appService.getUsers();
         $rootScope.chats = appService.getChats();
-        $rootScope.logout = logout;
 
-        function logout() {
-            authService.unAuth();
-        }
     }
 })();

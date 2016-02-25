@@ -1,0 +1,17 @@
+<div>
+    <h2>Sign-in</h2>
+    <form name="mainForm" action="#" method="post" novalidate>
+        <div>
+            <label>Enter your email</label>
+            <input required name="email" ng-model="formData.email" />
+        </div>
+        <div>
+            <label>Enter your Password</label>
+            <input required type="password" name="password" ng-model="formData.password" />
+        </div>
+        <div>
+            <button ng-disabled="mainForm.$invalid" ng-click="login($event)">Sign-in</button>
+        </div>
+        <div><a ui-sref="register">Sign-un</a></div>
+    </form>
+</div>

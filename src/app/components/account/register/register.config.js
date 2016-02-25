@@ -5,12 +5,12 @@
 
     /*ngInject*/
     function config($stateProvider) {
-        $stateProvider.state('login', {
-            url: '^/login',
+        $stateProvider.state('register', {
+            url: '^/register',
             views: {
                 content: {
-                    templateUrl : 'components/login/login.tpl.html',
-                    controller: 'LoginController'
+                    templateUrl : 'components/account/register/register.tpl.html',
+                    controller: 'RegisterController'
                 }
             }
         })

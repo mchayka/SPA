@@ -1,14 +1,16 @@
 angular
     .module('app', [
         'ui.router',
+        'firebase',
 
         'shared',
 
         'templates',
 
         'auth',
+
+        'account',
         'dashboard',
-        'login',
         'game',
 
         'layouts'
