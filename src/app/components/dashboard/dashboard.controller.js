@@ -13,7 +13,7 @@
         $scope.chats = chatsService.getChats(AccountInfo.uid);
         $scope.users = dashboardService.getUsers();
         $scope.onlineUsers = dashboardService.getOnlineUsers();
-        $scope.filterUsers = filterUsers;
+        $scope.checkOnline = checkOnline;
 
         $scope.talkTo = talkTo;
         $scope.signOut = signOut;
@@ -28,14 +28,14 @@
             $state.go('login');
         }
 
-        function filterUsers(uid) {
-            var excluded = true;
+        function checkOnline(uid) {
+            var isOffline = true;
             angular.forEach($scope.onlineUsers, function(onlineUser) {
                 if (onlineUser.uid == uid) {
-                    excluded = false;
+                    isOffline = false;
                 }
             });
-            return excluded;
+            return isOffline;
         }
     }
 })();
