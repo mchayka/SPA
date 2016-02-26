@@ -1,21 +1,31 @@
-<div>
-    <h2>Sign-up</h2>
-    <form name="mainForm" action="#" method="post" novalidate>
-        <div>
-            <label>Enter your name</label>
-            <input required name="name" ng-model="name" />
-        </div>
-        <div>
-            <label>Enter your email</label>
-            <input required name="email" ng-model="formData.email" />
-        </div>
-        <div>
-            <label>Enter your Password</label>
-            <input required type="password" name="password" ng-model="formData.password" />
-        </div>
-        <div>
-            <button ng-disabled="mainForm.$invalid" ng-click="register($event)">Sign-up</button>
-        </div>
-        <div><a ui-sref="login">Sign-in</a></div>
-    </form>
+<div layout="row" layout-align="center center" class="page">
+    <md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Sign-up</h1>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding>
+            <form name="mainForm" action="#" method="post" novalidate>
+
+                <md-input-container class="md-block">
+                    <label>your name</label>
+                    <input required name="name" ng-model="name">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Enter your email</label>
+                    <input required name="email" ng-model="formData.email" />
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Enter your Password</label>
+                    <input required type="password" name="password" ng-model="formData.password" />
+                </md-input-container>
+
+                <div layout-gt-xs layout-align="space-between center">
+                    <md-button class="md-raised md-primary"  ng-disabled="mainForm.$invalid" ng-click="register($event)">Sign-up</md-button>
+                    <p><a ui-sref="login">Sign-in</a></p>
+                </div>
+            </form>
+        </md-content>
+    </md-whiteframe>
 </div>
