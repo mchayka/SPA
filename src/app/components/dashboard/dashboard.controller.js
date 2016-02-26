@@ -4,7 +4,7 @@
         .controller('DashboardController', DashboardController);
 
     /*ngInject*/
-    function DashboardController($scope, $state, dashboardService, accountService, AccountInfo) {
+    function DashboardController($scope, $state, dashboardService, authService, AccountInfo) {
 
         dashboardService.setOnline(AccountInfo.uid);
 
@@ -23,7 +23,7 @@
         }
 
         function signOut() {
-            accountService.signOut();
+            authService.unAuth();
             $state.go('login');
         }
     }

@@ -4,25 +4,23 @@
         .factory('authService', authService);
 
     /*ngInject*/
-    function authService($q) {
-        var authKey = false;
-
+    function authService($firebaseAuth, firebaseReference) {
         return {
             auth: auth,
             unAuth: unAuth,
-            isAuth: isAuth
+            isAuthorized: isAuthorized
         };
 
-        function auth(key) {
-            authKey = key;
+        function auth(formData) {
+            return $firebaseAuth(firebaseReference).$authWithPassword(formData);
         }
 
         function unAuth() {
-            authKey = false;
+            $firebaseAuth(firebaseReference).$unauth();
         }
 
-        function isAuth() {
-            return authKey !== false ? $q.resolve() : $q.reject();
+        function isAuthorized() {
+            return $firebaseAuth(firebaseReference).$getAuth();
         }
     }
 })();

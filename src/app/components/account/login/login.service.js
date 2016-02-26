@@ -4,13 +4,13 @@
         .factory('loginService', loginService);
 
     /*ngInject*/
-    function loginService($firebaseAuth, firebaseReference) {
+    function loginService(authService) {
         return {
             login: login
         };
 
         function login(formData) {
-            return $firebaseAuth(firebaseReference).$authWithPassword(formData);
+            return authService.auth(formData);
         }
     }
 })();

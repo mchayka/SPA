@@ -4,42 +4,38 @@
         .factory('registerService', registerService);
 
     /*ngInject*/
-    function registerService($q, $firebaseAuth, firebaseReference) {
+    function registerService($q, firebaseReference) {
         return {
-            register: register
+            register: register,
+            updateProfile: updateProfile
         };
 
-        //TODO: Split it!
-        function register(formData, name) {
+        function register(formData) {
             var deferred = $q.defer();
-            $firebaseAuth(firebaseReference)
-                .$createUser(formData)
-                .then(function(response) {
-                    firebaseReference
-                        .child('dots/users/' + response.uid)
-                        .set({
-                            name: name,
-                            chats: []
-                        }, function(error) {
-                            if (!error) {
-                                $firebaseAuth(firebaseReference)
-                                    .$authWithPassword(formData)
-                                    .then(function() {
-                                        deferred.resolve();
-                                    }, function() {
-                                        //TODO: Should be returned some error information
-                                        deferred.reject();
-                                    });
-                            } else {
-                                deferred.reject(error);
-                            }
-                        });
-                }, function(response) {
-                    console.log(response);
-                    //TODO: Should be returned some error information
-                    deferred.reject();
+            firebaseReference
+                .createUser(formData, function(error, userData) {
+                    if (!error) {
+                        deferred.resolve(userData);
+                    } else {
+                        deferred.reject(error);
+                    }
                 });
+            return deferred.promise;
+        }
 
+        function updateProfile(uid, name) {
+            var deferred = $q.defer();
+            firebaseReference
+                .child('dots/users/' + uid)
+                .set({
+                    name: name
+                }, function(error) {
+                    if (!error) {
+                        deferred.resolve();
+                    } else {
+                        deferred.reject(error);
+                    }
+                });
             return deferred.promise;
         }
     }

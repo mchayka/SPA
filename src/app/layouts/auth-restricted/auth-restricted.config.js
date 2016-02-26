@@ -19,11 +19,11 @@
     }
 
     /*ngInject*/
-    function accountInfoResolver($firebaseAuth, $q, $state, $timeout, firebaseReference) {
+    function accountInfoResolver($q, $state, $timeout, authService) {
         var deferred = $q.defer();
 
         $timeout(function() {
-            var userInfo = $firebaseAuth(firebaseReference).$getAuth();
+            var userInfo = authService.isAuthorized();
             if (userInfo == null) {
                 $state.go('login');
                 deferred.reject();
