@@ -4,7 +4,7 @@
         .controller('RegisterController', RegisterController);
 
     /*ngInject*/
-    function RegisterController($scope, registerService, firebaseReference) {
+    function RegisterController($scope, $state, registerService) {
         $scope.formData = {};
         $scope.register = register;
 
@@ -12,15 +12,10 @@
             event.preventDefault();
 
             registerService
-                .register($scope.formData)
-                .then(function(response) {
-                    firebaseReference
-                        .child('dots/users/' + response.uid)
-                        .set({
-                            name: $scope.name,
-                            chats: []
-                        });
-                }, function(response) {
+                .register($scope.formData, $scope.name)
+                .then(function() {
+                    $state.go('dashboard');
+                }, function() {
                     //TODO: Show some error message for Register page
                 });
         }

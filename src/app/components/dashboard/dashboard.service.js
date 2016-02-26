@@ -4,12 +4,14 @@
         .factory('dashboardService', dashboardService);
 
     /*ngInject*/
-    function dashboardService($firebaseObject, firebaseReference) {
+    function dashboardService($firebaseObject, $firebaseArray, firebaseReference) {
         return {
             getUserInfo: getUserInfo,
             getUsers: getUsers,
             getChats: getChats,
-            createChat: createChat
+            createChat: createChat,
+            setOnline: setOnline,
+            getOnlineUsers: getOnlineUsers
         };
 
         function getUserInfo(uid) {
@@ -37,6 +39,25 @@
 
             firebaseReference.child('dots/users/' + uid + '/chats/' + chatId)
                 .set(true);
+        }
+
+        function setOnline(uid) {
+            var presenceList = firebaseReference.child('presence'),
+                userRef = presenceList.push(),
+                connectedRef = firebaseReference.child('.info/connected');
+
+            connectedRef.on('value', function(snap) {
+                if (snap.val()) {
+                    userRef.set({
+                        uid: uid
+                    });
+                    userRef.onDisconnect().remove();
+                }
+            });
+        }
+
+        function getOnlineUsers() {
+            return $firebaseArray(firebaseReference.child('presence'));
         }
     }
 })();

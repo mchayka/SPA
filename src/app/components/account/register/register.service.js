@@ -4,13 +4,43 @@
         .factory('registerService', registerService);
 
     /*ngInject*/
-    function registerService($firebaseAuth, firebaseReference) {
+    function registerService($q, $firebaseAuth, firebaseReference) {
         return {
             register: register
         };
 
-        function register(formData) {
-            return $firebaseAuth(firebaseReference).$createUser(formData);
+        //TODO: Split it!
+        function register(formData, name) {
+            var deferred = $q.defer();
+            $firebaseAuth(firebaseReference)
+                .$createUser(formData)
+                .then(function(response) {
+                    firebaseReference
+                        .child('dots/users/' + response.uid)
+                        .set({
+                            name: name,
+                            chats: []
+                        }, function(error) {
+                            if (error) {
+                                deferred.reject(error);
+                            } else {
+                                $firebaseAuth(firebaseReference)
+                                    .$authWithPassword(formData)
+                                    .then(function() {
+                                        deferred.resolve();
+                                    }, function() {
+                                        //TODO: Should be returned some error information
+                                        deferred.reject();
+                                    });
+                            }
+                        });
+                }, function(response) {
+                    console.log(response);
+                    //TODO: Should be returned some error information
+                    deferred.reject();
+                });
+
+            return deferred.promise;
         }
     }
 })();

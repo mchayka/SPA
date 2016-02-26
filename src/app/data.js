@@ -11,8 +11,7 @@ var data = {
                         one: true
                     },
                     game: {
-                        id: 'firstGame',
-                        creator: 'tomi'
+                        id: 'firstGame'
                     }
                 },
                 lisa: {
@@ -21,8 +20,7 @@ var data = {
                         one: true
                     },
                     game: {
-                        id: 'firstGame',
-                        creator: 'tomi'
+                        id: 'firstGame'
                     }
                 },
                 john: true,
@@ -32,6 +30,7 @@ var data = {
             },
             games: {
                 firstGame: {
+                    creator: 'tomi',
                     status: 0, // 0 - waiting, 1 - gaming, 2 - finished
                     players: {
                         lisa: true,

@@ -3,7 +3,7 @@
     <div class="messages">
         <div class="message" ng-repeat="message in messages">
             <div>From: {{message.sender}}</div>
-            <div>From: {{message.message}}</div>
+            <div>Message: {{message.message}}</div>
         </div>
     </div>
     <input ng-model="messageField" ng-keypress="keyPress($event)"/>

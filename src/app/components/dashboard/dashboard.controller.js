@@ -6,10 +6,13 @@
     /*ngInject*/
     function DashboardController($scope, $state, dashboardService, accountService, AccountInfo) {
 
+        dashboardService.setOnline(AccountInfo.uid);
+
         $scope.accountInfo = AccountInfo;
         $scope.userInfo = dashboardService.getUserInfo(AccountInfo.uid);
         $scope.chats = dashboardService.getChats(AccountInfo.uid);
         $scope.users = dashboardService.getUsers();
+        $scope.onlineUsers = dashboardService.getOnlineUsers();
 
         $scope.talkTo = talkTo;
         $scope.signOut = signOut;

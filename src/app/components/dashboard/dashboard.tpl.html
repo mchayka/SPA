@@ -1,8 +1,8 @@
 <div>This is Dashboard view and My name is {{userInfo.name}}</div>
 <div class="users-list">
-    <div class="user" ng-repeat="(uid, user) in users">
-        <span>{{user.name}}</span>
-        <a href="#" ng-click="talkTo($event, uid)">chat</a>
+    <div class="user" ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
+        <span>{{user.uid}}</span>
+        <a href="#" ng-click="talkTo($event, user.uid)">chat</a>
     </div>
 </div>
 <chat ng-repeat="(chatId, value) in chats"></chat>
