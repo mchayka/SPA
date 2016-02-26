@@ -6,7 +6,7 @@
             </div>
         </md-toolbar>
         <md-list>
-            <md-subheader class="md-no-sticky">Online users:</md-subheader>
+            <md-subheader class="md-no-sticky">Users:</md-subheader>
             <md-list-item ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
                 <a href="#" ng-click="talkTo($event, user.uid)">{{user.uid | userName}}</a>
                 <md-button class="md-icon-button md-secondary" aria-label="More">
@@ -25,7 +25,11 @@
             </div>
         </md-toolbar>
         <md-content layout-padding>
-            <chat ng-repeat="(chatId, value) in chats"></chat>
+            <div class="chat-bar">
+                <div layout="row" layout-padding>
+                    <chat ng-repeat="(chatId, value) in chats"></chat>
+                </div>
+            </div>
         </md-content>
     </div>
 </div>
