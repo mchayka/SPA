@@ -1,9 +1,31 @@
-<div>This is Dashboard view and My name is {{userInfo.name}}</div>
-<div class="users-list">
-    <div class="user" ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
-        <span>{{user.uid | userName}}</span>
-        <a href="#" ng-click="talkTo($event, user.uid)">chat</a>
+<div class="page" flex layout="row">
+    <md-sidenav md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z2" flex>
+        <md-toolbar class="md-warn">
+            <div class="md-toolbar-tools">
+                <h2>dots</h2>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding>
+            <div class="users-list">
+                <div class="user" ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
+                    <span>{{user.uid | userName}}</span>
+                    <a href="#" ng-click="talkTo($event, user.uid)">chat</a>
+                </div>
+            </div>
+        </md-content>
+    </md-sidenav>
+    <div flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <div layout layout-align="space-between center">
+                    <p>Hello {{userInfo.name}}</p>
+                    <span flex></span>
+                    <a href="#" ng-click="signOut()">Sign-out</a>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding>
+            <chat ng-repeat="(chatId, value) in chats"></chat>
+        </md-content>
     </div>
 </div>
-<chat ng-repeat="(chatId, value) in chats"></chat>
-<a href="#" ng-click="signOut()">Sign-out</a>
