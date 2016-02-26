@@ -4,13 +4,13 @@
         .controller('DashboardController', DashboardController);
 
     /*ngInject*/
-    function DashboardController($scope, $state, dashboardService, authService, AccountInfo) {
+    function DashboardController($scope, $state, dashboardService, chatsService, authService, AccountInfo) {
 
         dashboardService.setOnline(AccountInfo.uid);
 
         $scope.accountInfo = AccountInfo;
         $scope.userInfo = dashboardService.getUserInfo(AccountInfo.uid);
-        $scope.chats = dashboardService.getChats(AccountInfo.uid);
+        $scope.chats = chatsService.getChats(AccountInfo.uid);
         $scope.users = dashboardService.getUsers();
         $scope.onlineUsers = dashboardService.getOnlineUsers();
 
@@ -19,7 +19,7 @@
 
         function talkTo(event, uid) {
             event.preventDefault();
-            dashboardService.createChat(AccountInfo.uid, uid);
+            chatsService.createChat(AccountInfo.uid, uid);
         }
 
         function signOut() {

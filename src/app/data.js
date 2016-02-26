@@ -8,7 +8,7 @@ var data = {
                 tomi: {
                     name: 'Tomi',
                     chats: {
-                        one: true
+                        one: 2 // 0 - closed; 1 - minimized; 2 - opened
                     },
                     game: {
                         id: 'firstGame'
@@ -17,7 +17,7 @@ var data = {
                 lisa: {
                     name: 'Lisa',
                     chats: {
-                        one: true
+                        one: 2
                     },
                     game: {
                         id: 'firstGame'

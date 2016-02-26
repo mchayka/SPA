@@ -12,6 +12,7 @@ angular
 
         'account',
         'dashboard',
+        'chats',
         'game',
 
         'layouts'
