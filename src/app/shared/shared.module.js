@@ -1,4 +1,5 @@
 angular
     .module('shared', [
-        'chat'
+        'chat',
+        'user-name'
     ]);

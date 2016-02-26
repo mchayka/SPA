@@ -21,9 +21,7 @@
                             name: name,
                             chats: []
                         }, function(error) {
-                            if (error) {
-                                deferred.reject(error);
-                            } else {
+                            if (!error) {
                                 $firebaseAuth(firebaseReference)
                                     .$authWithPassword(formData)
                                     .then(function() {
@@ -32,6 +30,8 @@
                                         //TODO: Should be returned some error information
                                         deferred.reject();
                                     });
+                            } else {
+                                deferred.reject(error);
                             }
                         });
                 }, function(response) {

@@ -1,7 +1,7 @@
 <div>This is Dashboard view and My name is {{userInfo.name}}</div>
 <div class="users-list">
     <div class="user" ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
-        <span>{{user.uid}}</span>
+        <span>{{user.uid | userName}}</span>
         <a href="#" ng-click="talkTo($event, user.uid)">chat</a>
     </div>
 </div>

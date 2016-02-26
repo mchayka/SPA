@@ -2,7 +2,7 @@
     <h3>{{chatId}}</h3>
     <div class="messages">
         <div class="message" ng-repeat="message in messages">
-            <div>From: {{message.sender}}</div>
+            <div>From: {{message.sender | userName}}</div>
             <div>Message: {{message.message}}</div>
         </div>
     </div>

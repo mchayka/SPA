@@ -4,7 +4,7 @@
         .controller('AppController', AppController);
 
     /*ngInject*/
-    function AppController($rootScope, appService) {
+    function AppController() {
 
     }
 })();
