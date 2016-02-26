@@ -1,3 +1,23 @@
 .page {
   min-height: 100vh;
 }
+
+.page_login {
+  background: transparent url(../images/cool-background.jpg) no-repeat 0 0;
+  background-size: cover;
+}
+
+// chat bar
+
+.chat-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+// chat
+
+.chat {
+  max-width: 300px;
+}
