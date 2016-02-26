@@ -6,6 +6,11 @@
     /*ngInject*/
     function ChatController($scope, chatService) {
 
+        chatService.getChatName($scope.chatId, $scope.accountInfo.uid)
+            .then(function(response) {
+                $scope.chatName = response;
+            });
+
         $scope.messages = chatService.getMessages($scope.chatId);
 
         $scope.minimize = minimize;

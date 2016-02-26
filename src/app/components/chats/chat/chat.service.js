@@ -4,14 +4,31 @@
         .factory('chatService', chatService);
 
     /*ngInject*/
-    function chatService($firebaseArray, firebaseReference) {
+    function chatService($q, $firebaseArray, firebaseReference) {
         return {
+            getChatName: getChatName,
             getMessages: getMessages,
             sendMessage: sendMessage,
             minimize: minimize,
             maximize: maximize,
             close: close
         };
+
+        function getChatName(chatId, uid) {
+            var deferred = $q.defer(),
+                chatName = '';
+            firebaseReference
+                .child('dots/chats/' + chatId)
+                .once('value', function(snap) {
+                    angular.forEach(snap.val(), function(item, index) {
+                        if (index != uid) {
+                            chatName = index;
+                        }
+                    });
+                    deferred.resolve(chatName);
+                });
+            return deferred.promise;
+        }
 
         function getMessages(chatId) {
             return $firebaseArray(firebaseReference.child('dots/messages/' + chatId));
