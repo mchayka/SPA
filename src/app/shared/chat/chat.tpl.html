@@ -1,7 +1,7 @@
 <div class="chat md-whiteframe-1dp" layout="column" layout-align="space-between none">
     <md-toolbar>
         <div class="md-toolbar-tools" layout layout-align="space-between center">
-            <h3 class="chat__title">{{chatId}}</h3>
+            <h3 class="chat__title">{{chatId | chatName:accountInfo.uid}}</h3>
             <md-button class="md-icon-button" aria-label="close">
                 <md-icon class="material-icons">close</md-icon>
             </md-button>
