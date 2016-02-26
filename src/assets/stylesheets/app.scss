@@ -1,3 +1,17 @@
+// reset defaults
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// page
+
 .page {
   min-height: 100vh;
 }
@@ -19,5 +33,50 @@
 // chat
 
 .chat {
-  max-width: 300px;
+  width: 255px;
+  height: 335px;
+
+  & + & {
+    margin-left: 20px;
+  }
+}
+
+.chat__title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.chat__messages {
+  overflow: auto;
+}
+
+.chat__input {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.message {
+  width: 100%;
+}
+
+.message__body {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #DDDDDD;
+  background-color: #eeeeee;
+  color: #000088;
+}
+
+.message_by_myself {
+  text-align: right;
+
+  .message__body {
+    border-color: #67d6df;
+    background-color: #b2dfdb;
+  }
 }

@@ -1,10 +1,22 @@
-<div>
-    <h3>{{chatId}}</h3>
-    <div class="messages">
-        <div class="message" ng-repeat="message in messages">
-            <div>From: {{message.sender | userName}}</div>
-            <div>Message: {{message.message}}</div>
+<div class="chat md-whiteframe-1dp" layout="column" layout-align="space-between none">
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout layout-align="space-between center">
+            <h3 class="chat__title">{{chatId}}</h3>
+            <md-button class="md-icon-button" aria-label="close">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div flex layout="column" layout-align="end">
+        <div class="chat__messages" flex>
+            <div ng-repeat="message in messages">
+                <div ng-class="{'message_by_myself' : accountInfo.uid === message.sender}" class="message">
+                    <span class="message__body">{{message.message}}</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input class="chat__input" ng-model="messageField" ng-keypress="keyPress($event)"/>
         </div>
     </div>
-    <input ng-model="messageField" ng-keypress="keyPress($event)"/>
 </div>
