@@ -28,8 +28,8 @@ paths.srcIndex = paths.dirSrc + '/index.html';
 paths.srcTemplates = paths.dirApp + '/**/*.tpl.html';
 paths.srcScripts = paths.dirApp + '/**/*.js';
 paths.srcStyles = [
-    paths.dirAssets + '/stylesheets/**/*.css',
-    paths.dirApp + '/**/*.css'
+    paths.dirAssets + '/stylesheets/**/*.scss',
+    paths.dirApp + '/**/*.scss'
 ];
 
 paths.srcIcons = [
@@ -70,7 +70,7 @@ pipes.scriptedTemplates = function() {
 
 pipes.buildStyles = function() {
     return gulp.src(paths.srcStyles)
-        //.pipe(sass())
+        .pipe(sass())
         .pipe(concat('styles.css'))
         .pipe(gulp.dest(paths.dirBuildAssetsStylesheets));
 };
@@ -138,7 +138,7 @@ pipes.build = function() {
 
 pipes.releaseStyles = function() {
     return gulp.src(paths.srcStyles)
-        //.pipe(sass())
+        .pipe(sass())
         .pipe(concat('styles.css'))
         .pipe(gulp.dest(paths.dirReleaseAssetsStylesheets));
 };
