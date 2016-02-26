@@ -13,6 +13,7 @@
         $scope.chats = chatsService.getChats(AccountInfo.uid);
         $scope.users = dashboardService.getUsers();
         $scope.onlineUsers = dashboardService.getOnlineUsers();
+        $scope.filterUsers = filterUsers;
 
         $scope.talkTo = talkTo;
         $scope.signOut = signOut;
@@ -25,6 +26,16 @@
         function signOut() {
             authService.unAuth();
             $state.go('login');
+        }
+
+        function filterUsers(uid) {
+            var excluded = true;
+            angular.forEach($scope.onlineUsers, function(onlineUser) {
+                if (onlineUser.uid == uid) {
+                    excluded = false;
+                }
+            });
+            return excluded;
         }
     }
 })();
