@@ -10,9 +10,21 @@ var data = {
                     chats: {
                         one: true
                     },
-                    game: 'firstGame'
+                    game: {
+                        id: 'firstGame',
+                        creator: 'tomi'
+                    }
                 },
-                lisa: true,
+                lisa: {
+                    name: 'Lisa',
+                    chats: {
+                        one: true
+                    },
+                    game: {
+                        id: 'firstGame',
+                        creator: 'tomi'
+                    }
+                },
                 john: true,
                 monika: true,
                 kate: true,
@@ -20,6 +32,7 @@ var data = {
             },
             games: {
                 firstGame: {
+                    status: 0, // 0 - waiting, 1 - gaming, 2 - finished
                     players: {
                         lisa: true,
                         tomi: true
