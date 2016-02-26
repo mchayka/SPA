@@ -71,7 +71,7 @@ pipes.scriptedTemplates = function() {
 pipes.buildStyles = function() {
     return gulp.src(paths.srcStyles)
         .pipe(sass())
-        .pipe(concat('styles.css'))
+        .pipe(concat('app.css'))
         .pipe(gulp.dest(paths.dirBuildAssetsStylesheets));
 };
 
@@ -139,7 +139,7 @@ pipes.build = function() {
 pipes.releaseStyles = function() {
     return gulp.src(paths.srcStyles)
         .pipe(sass())
-        .pipe(concat('styles.css'))
+        .pipe(concat('app.css'))
         .pipe(gulp.dest(paths.dirReleaseAssetsStylesheets));
 };
 
