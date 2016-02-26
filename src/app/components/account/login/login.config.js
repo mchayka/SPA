@@ -6,6 +6,7 @@
     /*ngInject*/
     function config($stateProvider) {
         $stateProvider.state('login', {
+            parent: 'auth-free',
             url: '^/login',
             views: {
                 content: {

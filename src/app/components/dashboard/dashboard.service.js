@@ -4,7 +4,7 @@
         .factory('dashboardService', dashboardService);
 
     /*ngInject*/
-    function dashboardService($firebaseObject, $firebaseArray, firebaseReference) {
+    function dashboardService($firebaseObject, $firebaseArray, firebaseReference, appService) {
         return {
             getUserInfo: getUserInfo,
             getUsers: getUsers,
@@ -27,7 +27,7 @@
         }
 
         function createChat(myUid, uid) {
-            var chatId = myUid + '-' + uid;
+            var chatId = appService.generateUniqueId();
             firebaseReference.child('dots/chats/' + chatId + '/' + myUid)
                 .set(true);
 
