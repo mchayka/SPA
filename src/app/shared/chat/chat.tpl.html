@@ -7,7 +7,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <div flex layout="column" layout-align="end">
+    <div flex layout="column" layout-align="end" class="chat__body">
         <div class="chat__messages" flex>
             <div ng-repeat="message in messages">
                 <div ng-class="{'message_by_myself' : accountInfo.uid === message.sender}" class="message">
