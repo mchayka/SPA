@@ -31,7 +31,7 @@ var data = {
             games: {
                 firstGame: {
                     creator: 'tomi',
-                    status: 0, // 0 - waiting, 1 - gaming, 2 - finished
+                    status: 0, // 0 - waiting, 1 - gaming, 2 - finished, 3 - rejected
                     players: {
                         lisa: true,
                         tomi: true

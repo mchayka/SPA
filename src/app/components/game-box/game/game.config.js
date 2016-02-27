@@ -10,7 +10,7 @@
             url: '^/game',
             views: {
                 content: {
-                    templateUrl : 'components/game/game.tpl.html',
+                    templateUrl : 'components/games/game/game.tpl.html',
                     controller: 'GameController'
                 }
             }

@@ -13,7 +13,7 @@ angular
         'account',
         'dashboard',
         'chats',
-        'game',
+        'game-box',
 
         'layouts'
     ]);
