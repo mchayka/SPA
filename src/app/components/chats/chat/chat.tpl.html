@@ -1,4 +1,4 @@
-<div class="chat md-whiteframe-1dp">
+<div class="chat md-whiteframe-1dp" ng-class="{'chat_state_minimized_alert':unreadMessages}">
     <div class="chat__inner" layout="column" layout-align="space-between none">
         <div class="chat__header" ng-click="minimize($event, chatVisibility)">
             <div layout layout-align="space-between center">

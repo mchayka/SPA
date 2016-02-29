@@ -12,6 +12,7 @@
             });
 
         $scope.messages = chatService.getMessages($scope.chatId);
+        $scope.unreadMessages = 0;
 
         $scope.minimize = minimize;
         $scope.close = close;
