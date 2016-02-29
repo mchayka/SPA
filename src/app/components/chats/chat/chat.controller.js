@@ -17,6 +17,10 @@
         $scope.close = close;
         $scope.keyPress = keyPress;
 
+        $scope.$watch('messages', function() {
+            console.log($scope.chatVisibility);
+        });
+
         function minimize(event, value) {
             event.preventDefault();
 

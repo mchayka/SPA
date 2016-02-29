@@ -32,11 +32,7 @@
             </div>
         </md-toolbar>
         <md-content layout-padding>
-            <div class="chat-bar">
-                <div layout="row" layout-align="end">
-                    <chat ng-repeat="(chatId, value) in chats" ng-if="value != 0" ng-class="{'minimized': value == 1}"></chat>
-                </div>
-            </div>
+            <chats></chats>
         </md-content>
     </div>
 </div>

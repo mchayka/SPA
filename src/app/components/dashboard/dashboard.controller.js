@@ -10,7 +10,6 @@
 
         $scope.accountInfo = AccountInfo;
         $scope.userInfo = dashboardService.getUserInfo(AccountInfo.uid);
-        $scope.chats = chatsService.getChats(AccountInfo.uid);
         $scope.users = dashboardService.getUsers();
         $scope.onlineUsers = dashboardService.getOnlineUsers();
         $scope.checkOnline = checkOnline;
