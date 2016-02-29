@@ -1,0 +1,5 @@
+<div ng-class="{'new-message': message.status == 1}">
+    <div ng-class="{'message_by_myself' : accountInfo.uid === message.sender}" class="message">
+        <span class="message__body">{{message.content}}</span>
+    </div>
+</div>

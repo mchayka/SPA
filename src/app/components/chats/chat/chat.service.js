@@ -37,8 +37,9 @@
         function sendMessage(chatId, uid, message) {
             firebaseReference.child('messages/' + chatId)
                 .push({
+                    status: 1,
                     sender: uid,
-                    message: message
+                    content: message
                 });
         }
 
