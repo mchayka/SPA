@@ -4,12 +4,11 @@
         .factory('usersService', usersService);
 
     /*ngInject*/
-    function usersService($firebaseObject, $firebaseArray, firebaseReference) {
+    function usersService($firebaseObject, firebaseReference) {
         return {
             getUserInfo: getUserInfo,
             getUsers: getUsers,
-            setOnline: setOnline,
-            getOnlineUsers: getOnlineUsers
+            setOnline: setOnline
         };
 
         function getUserInfo(uid) {
@@ -19,21 +18,6 @@
         function getUsers() {
             return $firebaseObject(firebaseReference.child('users'));
         }
-
-        //function setOnline(uid) {
-        //    var presenceList = firebaseReference.child('presence'),
-        //        userRef = presenceList.push(),
-        //        connectedRef = firebaseReference.root().child('.info/connected');
-        //
-        //    connectedRef.on('value', function(snap) {
-        //        if (snap.val()) {
-        //            userRef.set({
-        //                uid: uid
-        //            });
-        //            userRef.onDisconnect().remove();
-        //        }
-        //    });
-        //}
 
         function setOnline(uid) {
             var userRef = firebaseReference.child('users/' + uid + '/status'),
@@ -45,10 +29,6 @@
                     userRef.onDisconnect().set(0);
                 }
             });
-        }
-
-        function getOnlineUsers() {
-            return $firebaseArray(firebaseReference.child('presence'));
         }
     }
 })();
