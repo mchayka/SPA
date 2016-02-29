@@ -1,10 +1,4 @@
 <md-list>
     <md-subheader class="md-no-sticky">Users:</md-subheader>
-    <md-list-item ng-repeat="(uid, user) in users" ng-if="uid != accountInfo.uid">
-        <a class="user" ng-class="{'user_state_online': user.status, 'user_state_offline': !user.status}" href="#" ng-click="talkTo($event, uid)">{{uid | userName}}</a>
-        <md-button class="md-icon-button md-secondary" aria-label="Play">
-            <md-icon class="material-icons">videogame_asset</md-icon>
-        </md-button>
-        <md-divider></md-divider>
-    </md-list-item>
+    <user ng-repeat="(uid, user) in users" ng-if="uid != accountInfo.uid"></user>
 </md-list>
