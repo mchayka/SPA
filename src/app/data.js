@@ -7,8 +7,18 @@ var data = {
             users: {
                 tomi: {
                     name: 'Tomi',
+                    status: 1, // 0 - offline; 1 - online
                     chats: {
-                        one: 2 // 0 - closed; 1 - minimized; 2 - opened
+                        one: {
+                            receiver: 'lisa',
+                            status: 2, // 0 - closed; 1 - minimized; 2 - opened
+                            unread: 0 // Count of unread messages
+                        },
+                        two: {
+                            receiver: 'monika',
+                            status: 2,
+                            unread: 0
+                        }
                     },
                     game: {
                         id: 'firstGame'
@@ -22,11 +32,7 @@ var data = {
                     game: {
                         id: 'firstGame'
                     }
-                },
-                john: true,
-                monika: true,
-                kate: true,
-                lina: true
+                }
             },
             games: {
                 firstGame: {
@@ -48,17 +54,17 @@ var data = {
                     lisa: true
                 },
                 two: {
-                    john: true,
+                    tomi: true,
                     monika: true
-                },
-                three: {
-                    kate: true,
-                    lina: true
                 }
             },
             messages: {
                 one: [
-                    {sender: 'lisa', message: 'Hi!'},
+                    {
+                        sender: 'lisa',
+                        message: 'Hi!',
+                        status: 1 // 1 - new, 0 - read
+                    },
                     {sender: 'tomi', message: 'Hello!'}
                 ],
                 two: [

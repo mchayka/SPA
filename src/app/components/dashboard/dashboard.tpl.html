@@ -5,26 +5,7 @@
                 <h2>dots</h2>
             </div>
         </md-toolbar>
-        <md-list>
-            <md-subheader class="md-no-sticky">Users:</md-subheader>
-            <md-list-item ng-repeat="user in onlineUsers" ng-if="user.uid != accountInfo.uid">
-                <a class="user user_state_online" href="#" ng-click="talkTo($event, user.uid)">{{user.uid | userName}}</a>
-                <md-button class="md-icon-button md-secondary" aria-label="Play">
-                    <md-icon class="material-icons">videogame_asset</md-icon>
-                </md-button>
-                <md-divider></md-divider>
-            </md-list-item>
-
-            <md-list-item ng-repeat="(uid, user) in users" ng-if="checkOnline(uid)">
-                <a  class="user user_state_offline" href="#" ng-click="talkTo($event, uid)">{{uid | userName}}</a>
-                <md-button class="md-icon-button md-secondary" aria-label="Play">
-                    <md-icon class="material-icons">videogame_asset</md-icon>
-                </md-button>
-                <md-divider></md-divider>
-            </md-list-item>
-        </md-list>
-
-
+        <users></users>
     </md-sidenav>
     <div flex>
         <md-toolbar>

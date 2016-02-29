@@ -14,6 +14,7 @@ angular
         'dashboard',
         'chats',
         'game-box',
+        'users',
 
         'layouts'
     ]);
