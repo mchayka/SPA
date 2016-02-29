@@ -8,7 +8,7 @@
         return function(uid) {
                 var name = '';
                 firebaseReference
-                    .child('dots/users/' + uid + '/name')
+                    .child('users/' + uid + '/name')
                     .once('value', function(snap) {
                         name = snap.val();
                     });

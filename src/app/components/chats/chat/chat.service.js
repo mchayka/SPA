@@ -18,7 +18,7 @@
             var deferred = $q.defer(),
                 chatName = '';
             firebaseReference
-                .child('dots/chats/' + chatId)
+                .child('chats/' + chatId)
                 .once('value', function(snap) {
                     angular.forEach(snap.val(), function(item, index) {
                         if (index != uid) {
@@ -31,11 +31,11 @@
         }
 
         function getMessages(chatId) {
-            return $firebaseArray(firebaseReference.child('dots/messages/' + chatId));
+            return $firebaseArray(firebaseReference.child('messages/' + chatId));
         }
 
         function sendMessage(chatId, uid, message) {
-            firebaseReference.child('dots/messages/' + chatId)
+            firebaseReference.child('messages/' + chatId)
                 .push({
                     sender: uid,
                     message: message
@@ -43,17 +43,17 @@
         }
 
         function minimize(myUid, chatId) {
-            firebaseReference.child('dots/users/' + myUid + '/chats/' + chatId)
+            firebaseReference.child('users/' + myUid + '/chats/' + chatId)
                 .set(1);
         }
 
         function maximize(myUid, chatId) {
-            firebaseReference.child('dots/users/' + myUid + '/chats/' + chatId)
+            firebaseReference.child('users/' + myUid + '/chats/' + chatId)
                 .set(2);
         }
 
         function close(myUid, chatId) {
-            firebaseReference.child('dots/users/' + myUid + '/chats/' + chatId)
+            firebaseReference.child('users/' + myUid + '/chats/' + chatId)
                 .set(0);
         }
     }
