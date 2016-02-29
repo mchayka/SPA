@@ -28,6 +28,7 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 10px;
   text-align: right;
 }
 
@@ -48,8 +49,12 @@ html {
   height: 335px;
 }
 
+.chat__messages {
+  overflow: auto;
+}
+
 .chat__header {
-  padding: 5px 10px;
+  padding: 5px 5px 5px 10px;
   background-color: rgb(63,81,181);
 
   &:focus {
@@ -92,12 +97,6 @@ html {
   font-weight: bold;
   color: #fff;
 }
-
-.chat__messages {
-  position: relative;
-  overflow: auto;
-}
-
 
 .chat__input {
   display: block;
