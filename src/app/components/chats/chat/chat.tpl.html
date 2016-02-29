@@ -1,8 +1,8 @@
 <div class="chat md-whiteframe-1dp" layout="column" layout-align="space-between none">
-    <md-toolbar>
+    <md-toolbar ng-click="minimize($event, value)">
         <div class="md-toolbar-tools" layout layout-align="space-between center">
-            <h3 class="chat__title">{{chatId}}</h3>
-            <md-button class="md-icon-button" aria-label="close">
+            <h3 class="chat__title">{{chatName | userName}}</h3>
+            <md-button class="md-icon-button" aria-label="close" ng-click="close($event)">
                 <md-icon class="material-icons">close</md-icon>
             </md-button>
         </div>

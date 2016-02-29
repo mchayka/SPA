@@ -8,7 +8,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'shared/chat/chat.tpl.html',
+            templateUrl: 'components/chats/chat/chat.tpl.html',
             controller: 'ChatController'
         };
     }

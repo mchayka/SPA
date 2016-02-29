@@ -1,7 +1,7 @@
 {
-  "name": "skiooApp",
+  "name": "dotsApp",
   "version": "0.0.1",
-  "description": "Application for skioo website",
+  "description": "Application for play dots",
   "main": "",
   "dependencies": {
     "gulp": "",
@@ -29,5 +29,5 @@
   },
   "devDependencies": {},
   "author": "Viktor Ugrin",
-  "license": "ISC"
+  "license": "GPL v3.0"
 }

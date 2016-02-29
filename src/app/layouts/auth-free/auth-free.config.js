@@ -1,34 +1,34 @@
 ;(function() {
     angular
-        .module('auth-restricted')
+        .module('auth-free')
         .config(config);
 
     /*ngInject*/
     function config($stateProvider) {
-        $stateProvider.state('auth-restricted', {
+        $stateProvider.state('auth-free', {
             abstract: true,
             resolve: {
                 AccountInfo: accountInfoResolver
             },
             views: {
                 content: {
-                    templateUrl : 'layouts/auth-restricted/auth-restricted.tpl.html'
+                    templateUrl : 'layouts/auth-free/auth-free.tpl.html'
                 }
             }
         })
     }
 
     /*ngInject*/
-    function accountInfoResolver($q, $state, $timeout, authService) {
+    function accountInfoResolver($firebaseAuth, $q, $state, $timeout, firebaseReference) {
         var deferred = $q.defer();
 
         $timeout(function() {
-            var userInfo = authService.isAuthorized();
-            if (userInfo == null) {
-                $state.go('login');
+            var userInfo = $firebaseAuth(firebaseReference).$getAuth();
+            if (userInfo != null) {
+                $state.go('dashboard');
                 deferred.reject();
             } else {
-                deferred.resolve(userInfo);
+                deferred.resolve();
             }
         });
 
