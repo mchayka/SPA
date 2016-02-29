@@ -9,9 +9,11 @@
     </md-toolbar>
     <div flex layout="column" layout-align="end" class="chat__body">
         <div class="chat__messages" flex>
-            <div ng-repeat="message in messages">
-                <div ng-class="{'message_by_myself' : accountInfo.uid === message.sender}" class="message">
-                    <span class="message__body">{{message.message}}</span>
+            <div class="chat__messages__layer">
+                <div ng-repeat="message in messages">
+                    <div ng-class="{'message_by_myself' : accountInfo.uid === message.sender}" class="message">
+                        <span class="message__body">{{message.message}}</span>
+                    </div>
                 </div>
             </div>
         </div>

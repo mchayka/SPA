@@ -57,8 +57,10 @@ html {
 }
 
 .chat__messages {
+  position: relative;
   overflow: auto;
 }
+
 
 .chat__input {
   display: block;
