@@ -9,7 +9,7 @@
     </md-toolbar>
     <div flex layout="column" layout-align="end">
         <div class="chat__messages" flex>
-            <message ng-repeat="message in messages"></message>
+            <message class="chat__messages__layer" ng-repeat="message in messages"></message>
         </div>
         <div>
             <input class="chat__input" ng-model="messageField" ng-keypress="keyPress($event)"/>
