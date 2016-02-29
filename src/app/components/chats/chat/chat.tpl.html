@@ -1,18 +1,20 @@
 <div class="chat md-whiteframe-1dp">
-    <div class="chat__header" ng-click="minimize($event, chatVisibility)">
-        <div class="md-toolbar-tools" layout layout-align="space-between center">
-            <h3 class="chat__title">{{chatName | userName}}</h3>
-            <md-button class="md-icon-button md-icon-button_for_chat_header" aria-label="close" ng-click="close($event)">
-                <md-icon class="material-icons material-icons_for_chat_header">close</md-icon>
-            </md-button>
+    <div class="chat__inner" layout="column" layout-align="space-between none">
+        <div class="chat__header" ng-click="minimize($event, chatVisibility)">
+            <div layout layout-align="space-between center">
+                <h3 class="chat__title">{{chatName | userName}}</h3>
+                <md-button class="md-icon-button md-icon-button_for_chat_header" aria-label="close" ng-click="close($event)">
+                    <md-icon class="material-icons material-icons_for_chat_header">close</md-icon>
+                </md-button>
+            </div>
         </div>
-    </div>
-    <div flex layout="column" layout-align="end">
-        <div class="chat__messages" flex>
-            <message class="chat__messages__layer" ng-repeat="message in messages"></message>
-        </div>
-        <div>
-            <input class="chat__input" ng-model="messageField" ng-keypress="keyPress($event)"/>
+        <div class="chat__body" flex layout="column" layout-align="end">
+            <div flex class="chat__messages">
+                <message ng-repeat="message in messages"></message>
+            </div>
+            <div>
+                <input class="chat__input" ng-model="messageField" ng-keypress="keyPress($event)"/>
+            </div>
         </div>
     </div>
 </div>
