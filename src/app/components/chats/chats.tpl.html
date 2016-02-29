@@ -1,5 +1,3 @@
 <div class="chat-bar">
-    <div layout="row" layout-align="end">
-        <chat ng-repeat="(chatId, chatVisibility) in chats" ng-if="chatVisibility != 0" ng-class="{'minimized': chatVisibility == 1}"></chat>
-    </div>
+    <chat ng-repeat="(chatId, chatVisibility) in chats" ng-if="chatVisibility != 0" ng-class="{'minimized': chatVisibility == 1}"></chat>
 </div>
