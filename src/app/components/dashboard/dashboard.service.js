@@ -4,7 +4,7 @@
         .factory('dashboardService', dashboardService);
 
     /*ngInject*/
-    function dashboardService($firebaseObject, $firebaseArray, firebaseReference, firebaseReferenceRoot) {
+    function dashboardService($firebaseObject, $firebaseArray, firebaseReference) {
         return {
             getUserInfo: getUserInfo,
             getUsers: getUsers,
@@ -23,7 +23,7 @@
         function setOnline(uid) {
             var presenceList = firebaseReference.child('presence'),
                 userRef = presenceList.push(),
-                connectedRef = firebaseReferenceRoot.child('.info/connected');
+                connectedRef = firebaseReference.root().child('.info/connected');
 
             connectedRef.on('value', function(snap) {
                 if (snap.val()) {
