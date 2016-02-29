@@ -4,7 +4,7 @@
         .factory('chatsService', chatsService);
 
     /*ngInject*/
-    function chatsService($firebaseObject, firebaseReference) {
+    function chatsService($firebaseObject, firebaseReference, appService) {
         return {
             getChats: getChats,
             createChat: createChat
