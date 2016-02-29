@@ -11,14 +11,14 @@
         };
 
         function getChats(uid) {
-            return $firebaseObject(firebaseReference.child('dots/users/' + uid + '/chats'));
+            return $firebaseObject(firebaseReference.child('users/' + uid + '/chats'));
         }
 
         function createChat(myUid, uid) {
             var chatId,
                 isExist = false;
 
-            firebaseReference.child('dots/chats/').once('value', function(snap) {
+            firebaseReference.child('chats/').once('value', function(snap) {
                 snap.forEach(function(childSnap) {
                     var chat = childSnap.val();
                     if (typeof chat[myUid] !== 'undefined' && typeof chat[uid] !== 'undefined') {
@@ -29,16 +29,16 @@
                 if (!isExist) {
                     chatId = appService.generateUniqueId();
                 }
-                firebaseReference.child('dots/chats/' + chatId + '/' + myUid)
+                firebaseReference.child('chats/' + chatId + '/' + myUid)
                     .set(2);
 
-                firebaseReference.child('dots/chats/' + chatId + '/' + uid)
+                firebaseReference.child('chats/' + chatId + '/' + uid)
                     .set(2);
 
-                firebaseReference.child('dots/users/' + myUid + '/chats/' + chatId)
+                firebaseReference.child('users/' + myUid + '/chats/' + chatId)
                     .set(2);
 
-                firebaseReference.child('dots/users/' + uid + '/chats/' + chatId)
+                firebaseReference.child('users/' + uid + '/chats/' + chatId)
                     .set(2);
             } );
         }

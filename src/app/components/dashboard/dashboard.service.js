@@ -13,17 +13,17 @@
         };
 
         function getUserInfo(uid) {
-            return $firebaseObject(firebaseReference.child('dots/users/' + uid));
+            return $firebaseObject(firebaseReference.child('users/' + uid));
         }
 
         function getUsers() {
-            return $firebaseObject(firebaseReference.child('dots/users'));
+            return $firebaseObject(firebaseReference.child('users'));
         }
 
         function setOnline(uid) {
             var presenceList = firebaseReference.child('presence'),
                 userRef = presenceList.push(),
-                connectedRef = firebaseReference.child('.info/connected');
+                connectedRef = firebaseReference.root().child('.info/connected');
 
             connectedRef.on('value', function(snap) {
                 if (snap.val()) {

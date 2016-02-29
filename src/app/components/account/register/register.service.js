@@ -26,7 +26,7 @@
         function updateProfile(uid, name) {
             var deferred = $q.defer();
             firebaseReference
-                .child('dots/users/' + uid)
+                .child('users/' + uid)
                 .set({
                     name: name
                 }, function(error) {
