@@ -84,6 +84,16 @@ html {
   .chat__body {
     display: none;
   }
+
+  .chat__header {
+    background-color: rgb(157,157,158);
+  }
+}
+
+.chat_state_minimized_alert {
+  .chat__header {
+    background-color: rgb(255,87,34);
+  }
 }
 
 .chat__title {
