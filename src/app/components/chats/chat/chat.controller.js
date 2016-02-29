@@ -11,6 +11,8 @@
                 $scope.chatName = response;
             });
 
+        console.log($scope.chat);
+
         $scope.messages = chatService.getMessages($scope.chatId);
         $scope.unreadMessages = 0;
 
@@ -19,7 +21,7 @@
         $scope.keyPress = keyPress;
 
         $scope.$watch('messages', function() {
-            console.log($scope.chatVisibility);
+            console.log($scope.chat.status);
         });
 
         function minimize(event, value) {
@@ -49,7 +51,7 @@
                     message = $scope.messageField;
                     $scope.messageField = '';
                     chatService
-                        .sendMessage($scope.chatId, $scope.accountInfo.uid, message);
+                        .sendMessage($scope.chat, $scope.chatId, $scope.accountInfo.uid, message);
                 }
             }
         }

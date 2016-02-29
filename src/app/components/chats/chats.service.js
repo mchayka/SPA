@@ -28,18 +28,30 @@
                 });
                 if (!isExist) {
                     chatId = appService.generateUniqueId();
+
+                    firebaseReference.child('chats/' + chatId + '/' + myUid)
+                        .set(2);
+
+                    firebaseReference.child('chats/' + chatId + '/' + uid)
+                        .set(2);
+
+                    firebaseReference.child('users/' + myUid + '/chats/' + chatId)
+                        .set({
+                            receiver: uid,
+                            status: 2,
+                            unread: 0
+                        });
+
+                    firebaseReference.child('users/' + uid + '/chats/' + chatId)
+                        .set({
+                            receiver: myUid,
+                            status: 0,
+                            unread: 0
+                        });
+                } else {
+                    firebaseReference.child('users/' + myUid + '/chats/' + chatId + '/status')
+                        .set(2);
                 }
-                firebaseReference.child('chats/' + chatId + '/' + myUid)
-                    .set(2);
-
-                firebaseReference.child('chats/' + chatId + '/' + uid)
-                    .set(2);
-
-                firebaseReference.child('users/' + myUid + '/chats/' + chatId)
-                    .set(2);
-
-                firebaseReference.child('users/' + uid + '/chats/' + chatId)
-                    .set(2);
             } );
         }
     }
