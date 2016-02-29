@@ -1,0 +1,30 @@
+<div class="game-box">
+    <div class="game-messages" ng-if="game.status == 0">
+        <div class="game-message" ng-if="game.creator == accountInfo.uid">
+            Waiting....
+        </div>
+        <div class="game-message" ng-if="game.creator != accountInfo.uid">
+            Do you want to play with {{game.creator | userName}}?
+            <button>Yes</button><button>No</button>
+        </div>
+    </div>
+    <div class="in-game" ng-if="game.status == 1">
+
+    </div>
+    <div class="game-messages" ng-if="game.status == 2">
+        <div class="game-message" >
+            You win! Do you want to play again?
+            <button>Yes</button><button>No</button>
+        </div>
+        <div class="game-message" >
+            You Lose! Do you want to play again?
+            <button>Yes</button><button>No</button>
+        </div>
+    </div>
+    <div class="game-messages" ng-if="game.status == 3">
+        <div class="game-message" ng-if="game.creator == accountInfo.uid">
+            Your request was rejected!
+            <button>Ok</button><button>re-send</button>
+        </div>
+    </div>
+</div>

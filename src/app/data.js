@@ -21,6 +21,10 @@ var data = {
                         }
                     },
                     game: {
+                        creator: 'tomi',
+                        winner: false,
+                        opponent: 'lisa',
+                        status: 0, // 0 - waiting, 1 - gaming, 2 - finished, 3 - rejected
                         id: 'firstGame'
                     }
                 },
@@ -37,6 +41,7 @@ var data = {
             games: {
                 firstGame: {
                     creator: 'tomi',
+                    winner: false,
                     status: 0, // 0 - waiting, 1 - gaming, 2 - finished, 3 - rejected
                     players: {
                         lisa: true,
