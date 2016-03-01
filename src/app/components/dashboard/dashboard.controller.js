@@ -11,7 +11,7 @@
         $scope.signOut = signOut;
 
         function signOut() {
-            authService.unAuth();
+            authService.unAuth($scope.accountInfo.uid);
             $state.go('login');
         }
     }

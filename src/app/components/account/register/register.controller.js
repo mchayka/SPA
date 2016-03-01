@@ -16,11 +16,11 @@
             registerService
                 .register($scope.formData)
                 .then(function(response) {
-                    registerService
-                        .updateProfile(response.uid, $scope.name)
+                    authService
+                        .auth($scope.formData)
                         .then(function() {
-                            authService
-                                .auth($scope.formData)
+                            registerService
+                                .updateProfile(response.uid, $scope.name)
                                 .then(function() {
                                     $state.go('dashboard');
                                 }, function(response) {
