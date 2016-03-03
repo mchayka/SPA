@@ -5,11 +5,11 @@
         </div>
         <div class="game-message" ng-if="game.creator != accountInfo.uid">
             Do you want to play with {{game.creator | userName}}?
-            <button>Yes</button><button>No</button>
+            <button ng-click="acceptPlay()">Yes</button><button ng-click="rejectPlay()">No</button>
         </div>
     </div>
     <div class="in-game" ng-if="game.status == 1">
-
+        <game></game>
     </div>
     <div class="game-messages" ng-if="game.status == 2">
         <div class="game-message" >
