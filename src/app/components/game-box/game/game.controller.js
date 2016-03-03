@@ -32,7 +32,7 @@
             } else if ($scope.game.status == 2) {
 
             } else if ($scope.game.status == 3) {
-
+                destroyGame();
             }
         });
 
@@ -42,6 +42,12 @@
             } else {
                 gameInstance = new TicTacToe($scope.game.creator, $scope.game.opponent, $scope.game.opponent, callbackFunction);
             }
+        }
+
+        function destroyGame() {
+            gameInstance.destroy();
+            gameInstance = false;
+            gameService.removeGame();
         }
 
         function callbackFunction(turn) {

@@ -183,7 +183,7 @@
         }
 
         function push(turn, internal) {
-            if (pushToScene(turn)) {
+            if (!ticTacToe.winner && pushToScene(turn)) {
                 ticTacToe.turns.push(turn);
                 if (internal) {
                     ticTacToe.callback(turn);
