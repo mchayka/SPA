@@ -14,13 +14,13 @@
             if (gameInstance) {
                 angular.forEach(newValue, function(item) {
                     turnResult = gameInstance.push(item);
-                    if (angular.isString(turnResult)) {
-                        if (turnResult == 'draw') {
-                            gameService.finishWithDraw($scope.game);
-                        } else {
-                            gameService.finishWithWin($scope.game, turnResult);
-                        }
-                    }
+                    //if (angular.isString(turnResult)) {
+                    //    if (turnResult == 'draw') {
+                    //        gameService.finishWithDraw($scope.game);
+                    //    } else {
+                    //        gameService.finishWithWin($scope.game, turnResult);
+                    //    }
+                    //}
 
                 })
             }
@@ -30,28 +30,46 @@
             if ($scope.game.status == 1) {
                 startPlay();
             } else if ($scope.game.status == 2) {
-
+                showPlay();
             } else if ($scope.game.status == 3) {
                 destroyGame();
             }
         });
 
         function startPlay() {
-            if ($scope.game.creator == $scope.accountInfo.uid) {
-                gameInstance = new TicTacToe($scope.game.creator, $scope.game.opponent, $scope.game.creator, callbackFunction);
-            } else {
-                gameInstance = new TicTacToe($scope.game.creator, $scope.game.opponent, $scope.game.opponent, callbackFunction);
+            gameInstance = new TicTacToe(
+                $scope.game.creator,
+                $scope.game.opponent,
+                $scope.game.creator == $scope.accountInfo.uid ?
+                    $scope.game.creator : $scope.game.opponent,
+                callbackFunction);
+        }
+
+        function showPlay() {
+            if (!gameInstance) {
+                gameInstance = new TicTacToe(
+                    $scope.game.creator,
+                    $scope.game.opponent,
+                    $scope.game.creator == $scope.accountInfo.uid ?
+                        $scope.game.creator : $scope.game.opponent,
+                    callbackFunction);
             }
         }
 
         function destroyGame() {
             gameInstance.destroy();
             gameInstance = false;
-            gameService.removeGame();
         }
 
-        function callbackFunction(turn) {
+        function callbackFunction(turn, winner) {
             gameService.turn($scope.game, turn);
+            if (angular.isString(winner)) {
+                if (winner == 'draw') {
+                    gameService.finishWithDraw($scope.game);
+                } else {
+                    gameService.finishWithWin($scope.game, winner);
+                }
+            }
         }
     }
 })();

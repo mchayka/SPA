@@ -186,7 +186,7 @@
             if (!ticTacToe.winner && pushToScene(turn)) {
                 ticTacToe.turns.push(turn);
                 if (internal) {
-                    ticTacToe.callback(turn);
+                    ticTacToe.callback(turn, ticTacToe.winner);
                 }
                 if (ticTacToe.winner) {
                     return ticTacToe.winner;
@@ -198,14 +198,28 @@
             }
         }
 
+        function isFirst() {
+            var i, first = true;
+            for (i = 0; i < ticTacToe.scene.length; i++) {
+                if (ticTacToe.scene[i] != 0) {
+                    first = false;
+                }
+            }
+            return first;
+        }
+
         function pushToScene(turn) {
             var isValid = true,
                 turnIndex = turn.y * 3 + turn.x;
             if (!ticTacToe.last || ticTacToe.last != turn.uid ) {
                 if (ticTacToe.scene[turnIndex] == 0) {
                     if (ticTacToe.players.first == turn.uid) {
-                        ticTacToe.scene[turnIndex] = 'o';
-                        ticTacToe.last = ticTacToe.players.first;
+                        if (!isFirst()) {
+                            ticTacToe.scene[turnIndex] = 'o';
+                            ticTacToe.last = ticTacToe.players.first;
+                        } else {
+                            isValid = false;
+                        }
                     } else {
                         ticTacToe.scene[turnIndex] = 'x';
                         ticTacToe.last = ticTacToe.players.second;

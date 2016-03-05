@@ -21,11 +21,27 @@
         }
 
         function finishWithDraw(game) {
-            console.log('draw');
+            finishGame(game, 'draw');
         }
 
         function finishWithWin(game, winner) {
-            console.log(winner);
+            finishGame(game, winner);
+        }
+
+        function finishGame(game, winner) {
+            firebaseReference.child('users/' + game.creator + '/game').update({
+                status: 2,
+                winner: winner
+            });
+            firebaseReference.child('users/' + game.opponent + '/game').update({
+                status: 2,
+                winner: winner
+            });
+
+            firebaseReference.child('games/' + game.id).update({
+                status: 2,
+                winner: winner
+            });
         }
     }
 })();

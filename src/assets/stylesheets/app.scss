@@ -187,3 +187,27 @@ html {
     color: #a5a5a5;
   }
 }
+
+// Game
+.game-box {
+  width: 480px;
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000000;
+    opacity: .2;
+    z-index: 10;
+  }
+
+  .game-messages {
+    z-index: 20;
+  }
+
+  .in-game {
+    z-index: 5;
+  }
+}

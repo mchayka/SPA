@@ -9,6 +9,8 @@
             getGame: getGame,
             acceptPlay: acceptPlay,
             rejectPlay: rejectPlay,
+            closeGame: closeGame,
+            playAgain: playAgain,
             createGameRequest: createGameRequest
         };
 
@@ -23,11 +25,21 @@
             firebaseReference.child('games/' + game.id + '/status').set(1);
         }
 
-        function rejectPlay(game) {
-            firebaseReference.child('users/' + game.creator + '/game/status').set(3);
-            firebaseReference.child('users/' + game.opponent + '/game/status').set(3);
+        function rejectPlay(game, uid) {
+            firebaseReference.child('users/' + uid + '/game').remove();
 
+            firebaseReference.child('users/' + game.creator + '/game/status').set(3);
             firebaseReference.child('games/' + game.id + '/status').set(3);
+        }
+
+        function closeGame(game, uid) {
+            firebaseReference.child('users/' + uid + '/game').remove();
+        }
+
+        function playAgain(game, uid) {
+            firebaseReference.child('users/' + game.creator + '/game').remove();
+            firebaseReference.child('users/' + game.opponent + '/game').remove();
+            createGameRequest(uid, uid == game.creator ? game.opponent : game.creator );
         }
 
         function createGameRequest(uid, opponentUid) {
@@ -63,9 +75,9 @@
 
         function validateGame(uid, opponentUid) {
             var deferred = $q.defer();
-            firebaseReference.child('users/' + uid + 'game').once('value', function(snap) {
+            firebaseReference.child('users/' + uid + '/game').once('value', function(snap) {
                 if (!snap.val()) {
-                    firebaseReference.child('users/' + opponentUid + 'game').once('value', function(snap) {
+                    firebaseReference.child('users/' + opponentUid + '/game').once('value', function(snap) {
                         if (!snap.val()) {
                             deferred.resolve();
                         } else {

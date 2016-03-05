@@ -7,15 +7,15 @@
         </md-toolbar>
         <users></users>
     </md-sidenav>
-    <div flex>
+    <div flex layout="column">
         <md-toolbar>
             <div class="md-toolbar-tools"  layout layout-align="space-between center">
                 <p>Hello {{userInfo.name}}</p>
                 <a href="#" ng-click="signOut()">Sign-out</a>
             </div>
         </md-toolbar>
-        <md-content layout-padding>
-            <game-box>
+        <md-content flex layout="row" layout-align="center center">
+            <game-box></game-box>
             <chats></chats>
         </md-content>
     </div>

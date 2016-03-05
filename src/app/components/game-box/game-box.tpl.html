@@ -8,23 +8,28 @@
             <button ng-click="acceptPlay()">Yes</button><button ng-click="rejectPlay()">No</button>
         </div>
     </div>
-    <div class="in-game" ng-if="game.status == 1">
+    <div class="in-game" ng-if="game.status == 1 || game.status == 2">
         <game></game>
     </div>
     <div class="game-messages" ng-if="game.status == 2">
-        <div class="game-message" >
-            You win! Do you want to play again?
-            <button>Yes</button><button>No</button>
+        <div class="game-message" ng-if="game.winner == 'draw'">
+            Draw!
+            <button ng-click="playAgain()">Play again</button><button ng-click="closeGame()">close</button>
         </div>
-        <div class="game-message" >
-            You Lose! Do you want to play again?
-            <button>Yes</button><button>No</button>
+        <div class="game-message" ng-if="game.winner == accountInfo.uid">
+            You win!
+            <button ng-click="playAgain()">Play again</button><button ng-click="closeGame()">close</button>
+        </div>
+        <div class="game-message" ng-if="game.winner != accountInfo.uid && game.winner != 'draw'">
+            You Lose!
+            <button ng-click="playAgain()">Play again</button><button ng-click="closeGame()">close</button>
         </div>
     </div>
     <div class="game-messages" ng-if="game.status == 3">
         <div class="game-message" ng-if="game.creator == accountInfo.uid">
             Your request was rejected!
-            <button>Ok</button><button>re-send</button>
+            <button ng-click="closeGame()">close</button>
         </div>
     </div>
+    <div class="background" ng-show="game.status == 0 || game.status == 2 || game.status == 3"></div>
 </div>
