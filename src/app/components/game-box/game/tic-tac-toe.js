@@ -85,7 +85,7 @@
             context.lineTo(shiftX + 140, shiftY + 140);
             context.moveTo(shiftX + 20, shiftY + 140);
             context.lineTo(shiftX + 140, shiftY + 20);
-            context.strokeStyle = 'black';
+            context.strokeStyle = '#FF6138';
             context.lineWidth = 20;
             context.stroke();
         }
@@ -97,7 +97,7 @@
                 shiftY = y * 160;
             context.beginPath();
             context.arc(shiftX + 80, shiftY + 80, 60, 0, 2*Math.PI);
-            context.strokeStyle = 'black';
+            context.strokeStyle = '#00A388';
             context.lineWidth = 20;
             context.stroke();
         }

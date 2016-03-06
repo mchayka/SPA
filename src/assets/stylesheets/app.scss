@@ -13,6 +13,18 @@ html {
 
 // page
 
+md-toolbar {
+  background: #79BD8F !important;
+
+  &.md-warn {
+    background: #00A388 !important;
+  }
+}
+
+.md-button.md-primary {
+  background: #79BD8F !important;
+}
+
 .page {
   min-height: 100vh;
 }
@@ -58,7 +70,7 @@ html {
 
 .chat__header {
   padding: 5px 5px 5px 10px;
-  background-color: rgb(63,81,181);
+  background-color: #79BD8F;
 
   &:focus {
     outline: none;
@@ -94,7 +106,7 @@ html {
 
   &.chat_state_minimized_alert {
     .chat__header {
-      background-color: rgb(63, 81, 181);
+      background-color: #79BD8F;
     }
   }
 }
@@ -149,12 +161,12 @@ html {
 
 .user-container {
   .material-icons {
-    color: yellowgreen;
+    color: #00A388;
   }
 
   &.in-game {
     .material-icons {
-      color: orangered;
+      color: #FF6138;
     }
   }
 }
@@ -265,17 +277,26 @@ html {
       font-size: 26px;
       margin: 10px 0 15px 0;
 
+      .first-player, .second-player {
+        color: #FF6138;
+
+        &.creator {
+          color: #00A388;
+        }
+      }
+
       .your-turn {
         text-align: center;
         color: #eeeeee;
 
         &.active {
-          color: #333333;
+          color: #D90000;
         }
       }
 
       .second-player {
         text-align: right;
+        color: #FF6138;
       }
     }
   }
