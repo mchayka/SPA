@@ -11,6 +11,7 @@
             rejectPlay: rejectPlay,
             closeGame: closeGame,
             playAgain: playAgain,
+            cancel: cancel,
             createGameRequest: createGameRequest
         };
 
@@ -40,6 +41,12 @@
             firebaseReference.child('users/' + game.creator + '/game').remove();
             firebaseReference.child('users/' + game.opponent + '/game').remove();
             createGameRequest(uid, uid == game.creator ? game.opponent : game.creator );
+        }
+
+        function cancel(game) {
+            firebaseReference.child('users/' + game.creator + '/game').remove();
+            firebaseReference.child('users/' + game.opponent + '/game').remove();
+            //firebaseReference.child('games/' + game.id + '/status').set(3);
         }
 
         function createGameRequest(uid, opponentUid) {

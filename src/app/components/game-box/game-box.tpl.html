@@ -2,6 +2,7 @@
     <div class="game-messages without-game" ng-if="game.status == 0">
         <div class="game-message" ng-if="game.creator == accountInfo.uid">
             <div class="title">Waiting....</div>
+            <div class="controls"><a href="#" ng-click="cancel()">Cancel</a></div>
         </div>
         <div class="game-message" ng-if="game.creator != accountInfo.uid">
             <div class="title">{{game.creator | userName}} wants to play!</div>

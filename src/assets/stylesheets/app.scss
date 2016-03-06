@@ -2,8 +2,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: 'Poiret One', cursive;
-  //font-weight: 700;
+  font-family: 'Raleway', sans-serif;
 }
 
 *,
@@ -29,7 +28,7 @@ html {
   z-index: 25;
   position: fixed;
   bottom: 0;
-  left: 0;
+  //left: 0;
   right: 0;
   padding: 10px;
   text-align: right;
@@ -54,6 +53,7 @@ html {
 
 .chat__messages {
   overflow: auto;
+  background: #fafafa;
 }
 
 .chat__header {
@@ -147,12 +147,26 @@ html {
 
 // user
 
+.user-container {
+  .material-icons {
+    color: yellowgreen;
+  }
+
+  &.in-game {
+    .material-icons {
+      color: orangered;
+    }
+  }
+}
+
 .user {
   display: inline-block;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ,
 
   &,
   &:hover,
@@ -163,32 +177,46 @@ html {
 
 .user_state_online {
   position: relative;
+  .user {
+    &,
+    &:hover,
+    &:focus {
+      color: #1f1f1f;
+    }
 
-  &,
-  &:hover,
-  &:focus {
-    color: #1f1f1f;
-  }
-
-  &:after {
-    content: "";
-    position: relative;
-    top: -.5em;
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin-left: 5px;
-    border-radius: 50%;
-    background-color: green;
+    &:after {
+      content: "";
+      position: relative;
+      top: -.5em;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-left: 5px;
+      border-radius: 50%;
+      background-color: green;
+    }
   }
 }
 
 .user_state_offline {
-  &,
-  &:hover,
-  &:focus {
-    color: #a5a5a5;
+  .user {
+    &,
+    &:hover,
+    &:focus {
+      color: #a5a5a5;
+    }
   }
+
+  .material-icons {
+    color: grey;
+  }
+
+  &.in-game {
+    .material-icons {
+      color: orangered;
+    }
+  }
+
 }
 
 // Game
@@ -219,7 +247,7 @@ html {
     .game-message {
 
       .title {
-        font-size: 76px;
+        font-size: 42px;
         text-align: center;
       }
 
@@ -240,8 +268,8 @@ html {
     font-size: 18px;
     color: #000000;
     padding: 0 20px;
-    height: 50px;
-    line-height: 50px;
+    height: 42px;
+    line-height: 42px;
     margin: 10px 10px;
     background: darkorange;
   }

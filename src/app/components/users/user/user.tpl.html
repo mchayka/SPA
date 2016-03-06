@@ -1,6 +1,5 @@
-<md-list-item>
+<md-list-item class="user-container" ng-class="{'in-game': user.game, 'user_state_online': user.status, 'user_state_offline': !user.status}">
     <a class="user"
-       ng-class="{'user_state_online': user.status, 'user_state_offline': !user.status}"
        href="#"
        ng-click="talkTo($event, uid)">{{uid | userName}}</a>
     <md-button class="md-icon-button md-secondary" aria-label="Play" ng-click="play($event, uid)">

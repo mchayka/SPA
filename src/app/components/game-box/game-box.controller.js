@@ -11,6 +11,7 @@
         $scope.rejectPlay = rejectPlay;
         $scope.closeGame = closeGame;
         $scope.playAgain = playAgain;
+        $scope.cancel = cancel;
 
         function acceptPlay() {
             gameBoxService.acceptPlay($scope.game);
@@ -26,6 +27,10 @@
 
         function playAgain() {
             gameBoxService.playAgain($scope.game, $scope.accountInfo.uid);
+        }
+
+        function cancel() {
+            gameBoxService.cancel($scope.game);
         }
     }
 })();
