@@ -260,6 +260,24 @@ html {
   .in-game {
     position: relative;
     z-index: 5;
+
+    .in-game-header {
+      font-size: 26px;
+      margin: 10px 0 15px 0;
+
+      .your-turn {
+        text-align: center;
+        color: #eeeeee;
+
+        &.active {
+          color: #333333;
+        }
+      }
+
+      .second-player {
+        text-align: right;
+      }
+    }
   }
 
   a {

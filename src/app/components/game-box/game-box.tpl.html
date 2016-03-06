@@ -10,6 +10,11 @@
         </div>
     </div>
     <div class="in-game" ng-if="game.status == 1 || game.status == 2">
+        <div class="in-game-header" layout="row">
+            <div flex class="first-player">{{accountInfo.uid | userName}}</div>
+            <div flex class="your-turn" ng-class="{'active': yourTurn}">Your turn</div>
+            <div flex class="second-player">{{game.creator != accountInfo.uid ? game.creator : game.opponent | userName}}</div>
+        </div>
         <game></game>
     </div>
     <div class="game-messages" ng-if="game.status == 2">

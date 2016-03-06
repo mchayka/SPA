@@ -14,14 +14,7 @@
             if (gameInstance) {
                 angular.forEach(newValue, function(item) {
                     turnResult = gameInstance.push(item);
-                    //if (angular.isString(turnResult)) {
-                    //    if (turnResult == 'draw') {
-                    //        gameService.finishWithDraw($scope.game);
-                    //    } else {
-                    //        gameService.finishWithWin($scope.game, turnResult);
-                    //    }
-                    //}
-
+                    $scope.yourTurn = (item.uid != $scope.accountInfo.uid);
                 })
             }
         }, true);
@@ -37,6 +30,7 @@
         });
 
         function startPlay() {
+            $scope.yourTurn = ($scope.game.creator != $scope.accountInfo.uid);
             gameInstance = new TicTacToe(
                 $scope.game.creator,
                 $scope.game.opponent,

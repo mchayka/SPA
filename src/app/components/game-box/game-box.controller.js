@@ -7,6 +7,8 @@
     function GameBoxController($scope, gameBoxService) {
         $scope.game = gameBoxService.getGame($scope.accountInfo.uid);
 
+        $scope.yourTurn = false;
+
         $scope.acceptPlay = acceptPlay;
         $scope.rejectPlay = rejectPlay;
         $scope.closeGame = closeGame;
