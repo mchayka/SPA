@@ -11,6 +11,31 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+
+  &.inverse-link {
+    color: #ffffff;
+
+    &:hover,
+    &:visited,
+    &:active{
+      color: #ffffff;
+    }
+  }
+
+  &:hover,
+  &:visited,
+  &:active{
+    color: #000000;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // page
 
 md-toolbar {
