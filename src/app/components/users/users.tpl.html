@@ -1,0 +1,4 @@
+<md-list>
+    <md-subheader class="md-no-sticky">Users:</md-subheader>
+    <user ng-repeat="(uid, user) in users" ng-if="uid != accountInfo.uid"></user>
+</md-list>

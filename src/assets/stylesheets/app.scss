@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 }
 
 *,
@@ -10,7 +11,44 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+
+  &.inverse-link {
+    color: #ffffff;
+
+    &:hover,
+    &:visited,
+    &:active{
+      color: #ffffff;
+    }
+  }
+
+  &:hover,
+  &:visited,
+  &:active{
+    color: #000000;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // page
+
+md-toolbar {
+  background: #79BD8F !important;
+
+  &.md-warn {
+    background: #00A388 !important;
+  }
+}
+
+.md-button.md-primary {
+  background: #79BD8F !important;
+}
 
 .page {
   min-height: 100vh;
@@ -24,9 +62,10 @@ html {
 // chat bar
 
 .chat-bar {
+  z-index: 25;
   position: fixed;
   bottom: 0;
-  left: 0;
+  //left: 0;
   right: 0;
   padding: 10px;
   text-align: right;
@@ -51,11 +90,12 @@ html {
 
 .chat__messages {
   overflow: auto;
+  background: #fafafa;
 }
 
 .chat__header {
   padding: 5px 5px 5px 10px;
-  background-color: rgb(63,81,181);
+  background-color: #79BD8F;
 
   &:focus {
     outline: none;
@@ -86,13 +126,13 @@ html {
   }
 
   .chat__header {
-    background-color: rgb(157,157,158);
+    background-color: rgb(181, 181, 181);
   }
-}
 
-.chat_state_minimized_alert {
-  .chat__header {
-    background-color: rgb(255,87,34);
+  &.chat_state_minimized_alert {
+    .chat__header {
+      background-color: #79BD8F;
+    }
   }
 }
 
@@ -129,6 +169,10 @@ html {
   color: #000088;
 }
 
+.message_new {
+  opacity: .3;
+}
+
 .message_by_myself {
   text-align: right;
 
@@ -140,12 +184,26 @@ html {
 
 // user
 
+.user-container {
+  .material-icons {
+    color: #00A388;
+  }
+
+  &.in-game {
+    .material-icons {
+      color: #FF6138;
+    }
+  }
+}
+
 .user {
   display: inline-block;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ,
 
   &,
   &:hover,
@@ -156,30 +214,127 @@ html {
 
 .user_state_online {
   position: relative;
+  .user {
+    &,
+    &:hover,
+    &:focus {
+      color: #1f1f1f;
+    }
 
-  &,
-  &:hover,
-  &:focus {
-    color: #1f1f1f;
-  }
-
-  &:after {
-    content: "";
-    position: relative;
-    top: -.5em;
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin-left: 5px;
-    border-radius: 50%;
-    background-color: green;
+    &:after {
+      content: "";
+      position: relative;
+      top: -.5em;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-left: 5px;
+      border-radius: 50%;
+      background-color: green;
+    }
   }
 }
 
 .user_state_offline {
-  &,
-  &:hover,
-  &:focus {
-    color: #a5a5a5;
+  .user {
+    &,
+    &:hover,
+    &:focus {
+      color: #a5a5a5;
+    }
+  }
+
+  .material-icons {
+    color: grey;
+  }
+
+  &.in-game {
+    .material-icons {
+      color: orangered;
+    }
+  }
+
+}
+
+// Game
+.game-box {
+  //width: 480px;
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    opacity: .7;
+    z-index: 10;
+  }
+
+  .game-messages {
+    position: relative;
+    z-index: 20;
+    width: 480px;
+    margin-left: -480px;
+
+    &.without-game {
+      margin-left: 0;
+    }
+
+    .game-message {
+
+      .title {
+        font-size: 42px;
+        text-align: center;
+      }
+
+      .controls {
+        text-align: center;
+      }
+    }
+  }
+
+  .in-game {
+    position: relative;
+    z-index: 5;
+
+    .in-game-header {
+      font-size: 26px;
+      margin: 10px 0 15px 0;
+
+      .first-player, .second-player {
+        color: #FF6138;
+
+        &.creator {
+          color: #00A388;
+        }
+      }
+
+      .your-turn {
+        text-align: center;
+        color: #eeeeee;
+
+        &.active {
+          color: #D90000;
+        }
+      }
+
+      .second-player {
+        text-align: right;
+        color: #FF6138;
+      }
+    }
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000000;
+    padding: 0 20px;
+    height: 42px;
+    line-height: 42px;
+    margin: 10px 10px;
+    background: darkorange;
   }
 }

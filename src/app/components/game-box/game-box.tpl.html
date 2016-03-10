@@ -1,0 +1,41 @@
+<div class="game-box" flex layout="row" layout-align="center center">
+    <div class="game-messages without-game" ng-if="game.status == 0">
+        <div class="game-message" ng-if="game.creator == accountInfo.uid">
+            <div class="title">Waiting....</div>
+            <div class="controls"><a href="#" ng-click="cancel()">Cancel</a></div>
+        </div>
+        <div class="game-message" ng-if="game.creator != accountInfo.uid">
+            <div class="title">{{game.creator | userName}} wants to play!</div>
+            <div class="controls"><a href="#" ng-click="acceptPlay()">Accept</a><a href="#" ng-click="rejectPlay()">Reject</a></div>
+        </div>
+    </div>
+    <div class="in-game" ng-if="game.status == 1 || game.status == 2">
+        <div class="in-game-header" layout="row">
+            <div flex class="first-player" ng-class="{'creator': game.creator == accountInfo.uid}">{{accountInfo.uid | userName}}</div>
+            <div flex class="your-turn" ng-class="{'active': yourTurn}">Your turn</div>
+            <div flex class="second-player" ng-class="{'creator': game.creator == (game.creator != accountInfo.uid ? game.creator : game.opponent)}">{{game.creator != accountInfo.uid ? game.creator : game.opponent | userName}}</div>
+        </div>
+        <game></game>
+    </div>
+    <div class="game-messages" ng-if="game.status == 2">
+        <div class="game-message" ng-if="game.winner == 'draw'">
+            <div class="title">Draw!</div>
+            <div class="controls"><a href="#" ng-click="playAgain()">Play again</a><a href="#" ng-click="closeGame()">Close</a></div>
+        </div>
+        <div class="game-message" ng-if="game.winner == accountInfo.uid">
+            <div class="title">You win!</div>
+            <div class="controls"><a href="#" ng-click="playAgain()">Play again</a><a href="#" ng-click="closeGame()">Close</a></div>
+        </div>
+        <div class="game-message" ng-if="game.winner != accountInfo.uid && game.winner != 'draw'">
+            <div class="title">You Lose!</div>
+            <div class="controls"><a href="#" ng-click="playAgain()">Play again</a><a href="#" ng-click="closeGame()">Close</a></div>
+        </div>
+    </div>
+    <div class="game-messages without-game" ng-if="game.status == 3">
+        <div class="game-message" ng-if="game.creator == accountInfo.uid">
+            <div class="title">Rejected!</div>
+            <div class="controls"><a href="#" ng-click="closeGame()">Close</a></div>
+        </div>
+    </div>
+    <div class="background" ng-show="game.status == 0 || game.status == 2 || game.status == 3"></div>
+</div>

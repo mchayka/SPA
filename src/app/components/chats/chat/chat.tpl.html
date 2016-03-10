@@ -1,8 +1,8 @@
 <div class="chat md-whiteframe-1dp">
     <div class="chat__inner" layout="column" layout-align="space-between none">
-        <div class="chat__header" ng-click="minimize($event, chatVisibility)">
+        <div class="chat__header" ng-click="minimize($event, chat.status)">
             <div layout layout-align="space-between center">
-                <h3 class="chat__title">{{chatName | userName}}</h3>
+                <h3 class="chat__title">{{chat.receiver | userName}}<span ng-if="chat.unread">({{chat.unread}})</span></h3>
                 <md-button class="md-icon-button md-icon-button_for_chat_header" aria-label="close" ng-click="close($event)">
                     <md-icon class="material-icons material-icons_for_chat_header">close</md-icon>
                 </md-button>

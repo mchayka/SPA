@@ -4,7 +4,66 @@
         .controller('GameController', GameController);
 
     /*ngInject*/
-    function GameController($scope) {
+    function GameController($scope, gameService) {
+        var gameInstance = false,
+            turnResult;
 
+        $scope.turns = gameService.getTurns($scope.game);
+
+        $scope.$watch('turns', function(newValue) {
+            if (gameInstance) {
+                angular.forEach(newValue, function(item) {
+                    turnResult = gameInstance.push(item);
+                    $scope.yourTurn = (item.uid != $scope.accountInfo.uid);
+                })
+            }
+        }, true);
+
+        $scope.$watch('game.status', function() {
+            if ($scope.game.status == 1) {
+                startPlay();
+            } else if ($scope.game.status == 2) {
+                showPlay();
+            } else if ($scope.game.status == 3) {
+                destroyGame();
+            }
+        });
+
+        function startPlay() {
+            $scope.yourTurn = ($scope.game.creator != $scope.accountInfo.uid);
+            gameInstance = new TicTacToe(
+                $scope.game.creator,
+                $scope.game.opponent,
+                $scope.game.creator == $scope.accountInfo.uid ?
+                    $scope.game.creator : $scope.game.opponent,
+                callbackFunction);
+        }
+
+        function showPlay() {
+            if (!gameInstance) {
+                gameInstance = new TicTacToe(
+                    $scope.game.creator,
+                    $scope.game.opponent,
+                    $scope.game.creator == $scope.accountInfo.uid ?
+                        $scope.game.creator : $scope.game.opponent,
+                    callbackFunction);
+            }
+        }
+
+        function destroyGame() {
+            gameInstance.destroy();
+            gameInstance = false;
+        }
+
+        function callbackFunction(turn, winner) {
+            gameService.turn($scope.game, turn);
+            if (angular.isString(winner)) {
+                if (winner == 'draw') {
+                    gameService.finishWithDraw($scope.game);
+                } else {
+                    gameService.finishWithWin($scope.game, winner);
+                }
+            }
+        }
     }
 })();
